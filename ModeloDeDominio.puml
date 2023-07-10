@@ -1,0 +1,18 @@
+@startuml
+
+Entity Libro{
+Isbn
+Titulo
+Autor
+Genero
+NumeroCopias
+}
+Entity Usuario{
+Nombre
+Apellido
+Rut
+Contrasenia
+}
+
+Usuario "1"->"1..*" Libro: Manipula
+@enduml

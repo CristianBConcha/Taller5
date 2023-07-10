@@ -1,0 +1,106 @@
+@startuml
+
+Class Libro{
+-Isbn :int
+-Titulo :String
+-Autor :String
+-Genero :String
+-NumeroCopias int
++Libro(int Isbn,String Titulo,String Autor,String Genero,int NumeroCopias)
++Get's()
++Set's()
+
+}
+Class  Usuario{
+-Nombre :String
+-Apellido :String
+-Rut :String
+-Contrasenia :String
++Usuario(String Nombre,String Apellido,String Rut.String Contrasenia)
++Get's()
++Set's()
+}
+Class DevolverLibro{
+-aceptarButton JButton
+-panel1 JPanel
+-textField1 JTextField
+-menuButton JButton
+-textField2 JTextField
++DevolverLibro(LinkedList<Libro> libros, Usuario usuario, LinkedList<Usuario> usuarios)
++devolver(LinkedList<Libro> libros) void
+}
+
+Interface Bibliotech{
++leerArchivoLibros()
++leerArchivoUsuarios()
++iniciarSesion()
+
+}
+Class BibliotechImpl{
++listaUsuariosLinkedList
++listaLibros LinkedList
++Bibliotech()
+}
+Class iniciarSesion{
+-panel1 Jpanel
+-RUT JTextField
+-CONTRASENIA JTextField
+-iniciarSesionButton JButton
+-usuario Usuario
+-libro Libro
++iniciarSesion(LinkedList usuarios,LinkedList Libros)
++vaciar() void
++iniciar() void
+}
+Class MenuBiblioteca{
+-panel2 JPanel
+-BUSCARLIBRO
+-PRESTARLIBRO
+-AGREGARLIBRONUEVO
+-DEVOLVERLIBRO
+-salirButton
++MenuBiblioteca(LinkedList libros,Usuario usuario,LinkedList usuarios)
+}
+Class BuscarLibro{
+-ISBNtexto JTextField
+-panel3 JPanel
+-ISBNetiqueta JLabel
+-buscarButton JButton
+-INFORMACION JTextField
+-menuBibliotecaButton JButton
++BuscarLibro(LinkedList libros, Usuario usuario, LinkedList usuarios)
++BuscarLibro(LinkedList libros)
+}
+Class AgregarLibro{
+-ISBNField1 JTextField
+-panel5 JPanel
+-TituloField2 JTextField
+-AutorField3 JTextField
+-CategoriaField4 JTextField
+-CantPagField5 JTextField
+-CopiasField6 JTextField
+-agregarButton JButton
+-menuPrincipalButton JButton
++AgregarLibro(LinkedList<Libro> libros, Usuario usuario, LinkedList<Usuario> usuarios)
++agregarLibro(LinkedList libros) void
+}
+Class PrestarLibro{
+-panel4 JPanel
+-ISBNField1 JTextField
+-buscarButton JButton
+-ISBNLabel JLabel
+-menuBibliotecaButton JButton
++PrestarLibro(LinkedList libros, Usuario usuario, LinkedList usuarios)
++prestarLibro(LinkedList libros, Usuario usuario) void
+}
+
+BibliotechImpl"1"->"1"Libro:Utiliza
+BibliotechImpl "1"->"1"Usuario:Utiliza
+BibliotechImpl-.-> Bibliotech: Implements
+BibliotechImpl"1"-->"1"iniciarSesion: utiliza
+BibliotechImpl"1"-->"1"MenuBiblioteca :utiliza
+BibliotechImpl"1"-->"1"BuscarLibro :utiliza
+BibliotechImpl"1"-->"1"DevolverLibro:utiliza
+BibliotechImpl"1"-->"1"AgregarLibro:utiliza
+BibliotechImpl"1"-->"1"PrestarLibro:utiliza
+@enduml
